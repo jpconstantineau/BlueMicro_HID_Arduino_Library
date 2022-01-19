@@ -91,7 +91,7 @@ jobs:
         env:
           BSP_PATH: .arduino15/packages/adafruit/hardware/nrf52
         run: |
-          arduino-cli compile --library ../ --fqbn ${{ matrix.fqbn_long }}  ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --libraries ../BlueMicro_HID_Arduino_Library --fqbn ${{ matrix.fqbn_long }}  ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           BSP_VERSION=`eval ls $HOME/$BSP_PATH`
           BUILDLOC=`eval ls ./examples/${{ matrix.sketch }}/build`
           python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
@@ -100,11 +100,11 @@ jobs:
       - name: Compile Sketch - RP2040
         if:  ${{ contains( matrix.fqbn_long , 'rp2040' ) }}
         run: |
-          arduino-cli compile --library ../ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --libraries ../ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           ls -lR ./examples/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - samd
         if:  ${{ contains( matrix.fqbn_long , 'samd' ) }}
         run: |
-          arduino-cli compile --library ../ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           ls -lR ./examples/${{ matrix.sketch }}/build/
