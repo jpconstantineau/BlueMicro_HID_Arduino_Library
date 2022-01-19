@@ -1,0 +1,11 @@
+# Syntax Coloring Map For BlueMicro_HID Library
+
+# Datatypes (KEYWORD1)
+Test    KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+doSomething KEYWORD2
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)
