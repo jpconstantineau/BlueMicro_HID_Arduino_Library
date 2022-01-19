@@ -43,6 +43,7 @@ jobs:
         if:  ${{ contains( matrix.fqbn_long , 'nrf52' ) }}
         env:
           BSP_URL_ADA: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+          BSP_URL: https://github.com/jpconstantineau/Community_nRF52_Arduino/releases/latest/download/package_jpconstantineau_boards_index.json
         run: |
           pip3 install adafruit-nrfutil
           arduino-cli config init
@@ -99,11 +100,11 @@ jobs:
       - name: Compile Sketch - RP2040
         if:  ${{ contains( matrix.fqbn_long , 'rp2040' ) }}
         run: |
-          arduino-cli compile --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --library ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           ls -lR ./examples/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - samd
         if:  ${{ contains( matrix.fqbn_long , 'samd' ) }}
         run: |
-          arduino-cli compile --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --library ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           ls -lR ./examples/${{ matrix.sketch }}/build/
