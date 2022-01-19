@@ -11,7 +11,9 @@ jobs:
         sketch: ['promicro']
         fqbn_long: ['rp2040:rp2040:adafruit_kb2040',
                     'rp2040:rp2040:sparkfun_promicrorp2040',
-                    'community_nrf52:nrf52:bluemicro840',]
+                    'community_nrf52:nrf52:bluemicro_nrf52840',
+                    'community_nrf52:nrf52:nice_nano',
+                    'community_nrf52:nrf52:bluemicro2_1',]
 
     runs-on: ubuntu-latest
     outputs:
