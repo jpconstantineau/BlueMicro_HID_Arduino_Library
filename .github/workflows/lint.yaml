@@ -1,3 +1,5 @@
+name: Lint Library and Examples
+
 on: [push, pull_request]
 jobs:
   lint:
