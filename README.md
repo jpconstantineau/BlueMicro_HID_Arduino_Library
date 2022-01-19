@@ -1,13 +1,26 @@
 # BlueMicro_HID_Arduino_Library
 
+[![Current Version](https://img.shields.io/github/v/tag/jpconstantineau/BlueMicro_HID_Arduino_Library)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/tags)  [![GitHub pull requests](https://img.shields.io/github/issues-pr/jpconstantineau/BlueMicro_HID_Arduino_Library.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library) [![GitHub issues](https://img.shields.io/github/issues/jpconstantineau/BlueMicro_HID_Arduino_Library.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/issues)
 
-[![Lint Library and Examples](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/lint.yaml/badge.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/lint.yaml) [![Current Version](https://img.shields.io/github/v/tag/jpconstantineau/BlueMicro_HID_Arduino_Library)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/tags)  [![GitHub pull requests](https://img.shields.io/github/issues-pr/jpconstantineau/BlueMicro_HID_Arduino_Library.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library) [![GitHub issues](https://img.shields.io/github/issues/jpconstantineau/BlueMicro_HID_Arduino_Library.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/issues)
+[![Lint Library and Examples](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/lint.yaml/badge.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/lint.yaml) [![Build All Examples](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/build-examples.yml/badge.svg)](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/actions/workflows/build-examples.yml)
+
+
 
 A Universal Library for handling BLE and USB Human Interface Device (HID) with a computer.
 
+
+# Dependencies
+
+|Board Support Package Name| Libraries Needed | Notes |
+|---|---|---|
+| Adafruit nRF52 Boards | included in BSP | |
+| Community nRF52 Add-On Boards | included in BSP | BSP Needs updating |
+| Raspberry Pi RP2040 Boards | Adafruit TinyUSB Library | Library is separate download |
+| Adafruit SAMD Boards | Adafruit TinyUSB Library | Library is separate download |
+
 ## Supported Processors
 
-| Controller | Core                      | Flash     | Ram   | HID         |
+| Controller | Core                      | Flash     | RAM   | HID         |
 | ---------  | ------------------------  | --------- | ----- | ----------- |
 | nRF52832   | 1 ARM Cortex M4F @ 64Mhz  | 512Kb     | 128Kb | BLE         |
 | nRF52840   | 1 ARM Cortex M4F @ 64Mhz  | 1MB       | 256Kb | USB & BLE   |
@@ -16,12 +29,19 @@ A Universal Library for handling BLE and USB Human Interface Device (HID) with a
 | RP2040     | 2 ARM Cortex M0+ @ 133Mhz | up to 2Mb | 264Kb | USB         |
 
 
-## Requirements for Support
+## Requirements for Support by this library
 
 - Arduino Board Support Package is available
 - TinyUSB is used as the USB stack
 
+Notes: 
+- Board Support Packages (BSPs) based on the Arduino nRF52 stack do not use the same API for HID communications and do not use TinyUSB as the USB stack.  Seeeduino nRF52 and Arduino nRF52 BSPs are such examples.
+
+- STM32duino does not use TinyUSB as the USB stack.
+
 # Examples
+
+There are a number of examples you can use to start from.  The following examples are very similar but are tailored to specific hardware.
 
 * `feather` - Simple test for barebones Feather boards
 * `feather_neokey2` - Simple test for Feather boards with a NeoKey 2 Featherwing
@@ -43,13 +63,13 @@ void setup()
 {
 
 
-  hid.begin(); 
+  bluemicro_hid.begin(); 
   
   // Set up button, pullup opposite to active state
   pinMode(pin, activeState ? INPUT_PULLDOWN : INPUT_PULLUP);
 
   Serial.begin(115200);
-  Serial.println("Adafruit TinyUSB HID Composite example");
+  Serial.println("BlueMicro_HID Composite example");
 }
 
 void loop()
@@ -64,7 +84,7 @@ void loop()
   if (btn_pressed )
   {
     int8_t const delta = 5;
-    hid.mouseMove(delta, delta); // right + down
+    bluemicro_hid.mouseMove(delta, delta); // right + down
   }
 
   /*------------- Keyboard -------------*/
@@ -76,13 +96,13 @@ void loop()
       uint8_t keycode[6] = { 0 };
       keycode[0] = HID_KEY_A;
 
-      hid.keyboardReport(0, keycode);
+      bluemicro_hid.keyboardReport(0, keycode);
 
       has_key = true;
     }else
     {
       // send empty key report if previously has key pressed
-      if (has_key) hid.keyboardRelease();
+      if (has_key) bluemicro_hid.keyboardRelease();
       has_key = false;
     }
 
@@ -96,16 +116,16 @@ void loop()
     if ( btn_pressed )
     {
       // send volume down (0x00EA)
-      hid.consumerKeyPress(HID_USAGE_CONSUMER_VOLUME_DECREMENT);
+      bluemicro_hid.consumerKeyPress(HID_USAGE_CONSUMER_VOLUME_DECREMENT);
       has_consumer_key = true;
     }else
     {
       // release the consume key by sending zero (0x0000)
-      if (has_consumer_key) hid.consumerKeyRelease();
+      if (has_consumer_key) bluemicro_hid.consumerKeyRelease();
       has_consumer_key = false;
     }
     
-  hid.processQueues(CONNECTION_MODE_AUTO);
+  bluemicro_hid.processQueues(CONNECTION_MODE_AUTO);
 }
 ```
 
@@ -113,5 +133,5 @@ void loop()
 
 The following API is available if the BlueMicro_HID library in included in a sketch file.
 
-## hid.(...)
+## bluemicro_hid.(...)
 

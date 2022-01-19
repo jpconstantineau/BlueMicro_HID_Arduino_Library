@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2021 BlueMicro_HID_Common contributors (https://github.com/jpconstantineau/BlueMicro_HID_Common/graphs/contributors)
+// SPDX-FileCopyrightText: 2022 BlueMicro_HID_Arduino_Library contributors (https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/graphs/contributors)
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
@@ -22,13 +22,13 @@ void setup()
 {
 
 
-  hid.begin(); 
+  bluemicro_hid.begin(); 
   
   // Set up button, pullup opposite to active state
   pinMode(pin, activeState ? INPUT_PULLDOWN : INPUT_PULLUP);
 
   Serial.begin(115200);
-  Serial.println("Adafruit TinyUSB HID Composite example");
+  Serial.println("BlueMicro_HID Composite example");
 }
 
 void loop()
@@ -43,7 +43,7 @@ void loop()
   if (btn_pressed )
   {
     int8_t const delta = 5;
-    hid.mouseMove(delta, delta); // right + down
+    bluemicro_hid.mouseMove(delta, delta); // right + down
   }
 
   /*------------- Keyboard -------------*/
@@ -55,13 +55,13 @@ void loop()
       uint8_t keycode[6] = { 0 };
       keycode[0] = HID_KEY_A;
 
-      hid.keyboardReport(0, keycode);
+      bluemicro_hid.keyboardReport(0, keycode);
 
       has_key = true;
     }else
     {
       // send empty key report if previously has key pressed
-      if (has_key) hid.keyboardRelease();
+      if (has_key) bluemicro_hid.keyboardRelease();
       has_key = false;
     }
 
@@ -75,14 +75,14 @@ void loop()
     if ( btn_pressed )
     {
       // send volume down (0x00EA)
-      hid.consumerKeyPress(HID_USAGE_CONSUMER_VOLUME_DECREMENT);
+      bluemicro_hid.consumerKeyPress(HID_USAGE_CONSUMER_VOLUME_DECREMENT);
       has_consumer_key = true;
     }else
     {
       // release the consume key by sending zero (0x0000)
-      if (has_consumer_key) hid.consumerKeyRelease();
+      if (has_consumer_key) bluemicro_hid.consumerKeyRelease();
       has_consumer_key = false;
     }
     
-  hid.processQueues(CONNECTION_MODE_AUTO);
+  bluemicro_hid.processQueues(CONNECTION_MODE_AUTO);
 }
