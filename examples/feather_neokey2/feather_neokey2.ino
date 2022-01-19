@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-#include <BlueMicro_HID.h>
+#include <bluemicro_hid.h>
 
 // This was tested with the following hardware:
 // Adafruit nRF52832 Feather - BLE Only

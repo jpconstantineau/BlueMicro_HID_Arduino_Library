@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-#include "BlueMicro_HID.h"
+#include "bluemicro_hid.h"
 #ifdef HARDWARE_DETECT_BLE_AVAILABLE
   #ifdef HARDWARE_DETECT_USB_AVAILABLE
     // BLE+USB
