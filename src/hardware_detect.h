@@ -13,5 +13,5 @@
   #endif
 
 #ifndef HARDWARE_DETECTED 
-  #error “This library requires TinyUSB support and/or nRF52 BlueFruit support.”
+  #error This library requires TinyUSB support and/or nRF52 BlueFruit support.
 #endif
