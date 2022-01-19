@@ -1,4 +1,5 @@
-name: Build - example - feather
+
+name: Build - example - QT Py Form factor
 
 on: [pull_request, push, 'workflow_dispatch']
 
@@ -7,12 +8,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        sketch: ['feather_neokey2']
-        fqbn_long: ['adafruit:nrf52:feather52832',
-                    'adafruit:nrf52:feather52840',
-                    'adafruit:samd:adafruit_feather_m0',
-                    'adafruit:samd:adafruit_feather_m4',
-                    'rp2040:rp2040:adafruit_feather',]
+        sketch: ['qtpy']
+        fqbn_long: ['adafruit:samd:adafruit_qtpy_m0',
+                    'rp2040:rp2040:adafruit_qtpy',]
 
     runs-on: ubuntu-latest
     outputs:
