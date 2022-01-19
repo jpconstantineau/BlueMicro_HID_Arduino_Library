@@ -100,10 +100,10 @@ jobs:
       - name: Compile Sketch - RP2040
         if:  ${{ contains( matrix.fqbn_long , 'rp2040' ) }}
         run: |
-          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --verbose --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
           ls -lR ./examples/${{ matrix.sketch }}/build/
 
-      - name: Compile Sketch - samd
+      - name: Compile Sketch - SAMD
         if:  ${{ contains( matrix.fqbn_long , 'samd' ) }}
         run: |
           arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
