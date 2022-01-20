@@ -128,6 +128,11 @@ void loop()
   bluemicro_hid.processQueues(CONNECTION_MODE_AUTO);
 }
 ```
+# Overview of the Library
+
+
+![Overview](extras/images/BlueMicro_HID.drawio.svg)
+
 
 # BlueMicro_HID API
 
