@@ -90,23 +90,23 @@ jobs:
         env:
           BSP_PATH: .arduino15/packages/adafruit/hardware/nrf52
         run: |
-          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}  ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}  ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
           BSP_VERSION=`eval ls $HOME/$BSP_PATH`
-          BUILDLOC=`eval ls ./examples/${{ matrix.sketch }}/build`
-          python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
-          ls -lR ./examples/${{ matrix.sketch }}/build/
+          BUILDLOC=`eval ls ./examples/Hardware/${{ matrix.sketch }}/build`
+          python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./examples/Hardware/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./examples/Hardware/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - RP2040
         if:  ${{ contains( matrix.fqbn_long , 'rp2040' ) }}
         run: |
-          arduino-cli compile --verbose --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
-          ls -lR ./examples/${{ matrix.sketch }}/build/
+          arduino-cli compile --verbose --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - SAMD
         if:  ${{ contains( matrix.fqbn_long , 'samd' ) }}
         run: |
-          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
-          ls -lR ./examples/${{ matrix.sketch }}/build/
+          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
   build-itsybitsy:
     strategy:
@@ -299,23 +299,23 @@ jobs:
         env:
           BSP_PATH: .arduino15/packages/adafruit/hardware/nrf52
         run: |
-          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}  ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
+          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}  ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
           BSP_VERSION=`eval ls $HOME/$BSP_PATH`
-          BUILDLOC=`eval ls ./examples/${{ matrix.sketch }}/build`
-          python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./examples/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
-          ls -lR ./examples/${{ matrix.sketch }}/build/
+          BUILDLOC=`eval ls ./examples/Hardware/${{ matrix.sketch }}/build`
+          python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./examples/Hardware/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.hex -c -f 0xADA52840 -o ./examples/Hardware/${{ matrix.sketch }}/build/${{ matrix.sketch }}.ino.uf2
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - RP2040
         if:  ${{ contains( matrix.fqbn_long , 'rp2040' ) }}
         run: |
-          arduino-cli compile --verbose --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
-          ls -lR ./examples/${{ matrix.sketch }}/build/
+          arduino-cli compile --verbose --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
       - name: Compile Sketch - SAMD
         if:  ${{ contains( matrix.fqbn_long , 'samd' ) }}
         run: |
-          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/${{ matrix.sketch }}  --output-dir ./examples/${{ matrix.sketch }}/build
-          ls -lR ./examples/${{ matrix.sketch }}/build/   
+          arduino-cli compile --libraries ./ --fqbn ${{ matrix.fqbn_long }}:usbstack=tinyusb ./examples/Hardware/${{ matrix.sketch }}  --output-dir ./examples/Hardware/${{ matrix.sketch }}/build
+          ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/   
 
   build-qtpy:
     strategy:
