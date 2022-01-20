@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
+// This example show how to modify the USB Settings
 // Adafruit Feather with a NeoKey 2 FeatherWing
 // Only 1 of the keys is used in this example
 // You can use this example without a NeoKey 2
