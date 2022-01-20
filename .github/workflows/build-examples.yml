@@ -521,7 +521,7 @@ jobs:
           ls -lR ./examples/Hardware/${{ matrix.sketch }}/build/
 
 
-build-API:
+  build-API:
     strategy:
       fail-fast: false
       matrix:

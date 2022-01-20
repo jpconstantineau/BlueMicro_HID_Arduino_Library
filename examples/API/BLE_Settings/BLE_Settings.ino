@@ -50,7 +50,14 @@
 // the setup function runs once when you press reset or power the board
 void setup()
 {
-
+  //bluemicro_hid.setBLEManufacturer("Adafruit Industries");
+  //bluemicro_hid.setBLEModel("Bluefruit Feather 52");
+  //bluemicro_hid.setBLETxPower(4);
+  //bluemicro_hid.setHIDMessageDelay(10);
+  //bluemicro_hid.setUSBPollInterval();
+  //bluemicro_hid.setUSBStringDescriptor();
+  //usb_hid.setReportCallback(NULL, hid_report_callback);
+  //blehid.setKeyboardLedCallback(set_keyboard_led);
   bluemicro_hid.begin(); 
   
   // Set up button, pullup opposite to active state
