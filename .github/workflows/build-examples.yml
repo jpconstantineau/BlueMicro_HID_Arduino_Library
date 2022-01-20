@@ -10,7 +10,7 @@ jobs:
         sketch: ['feather_neokey2']
         fqbn_long: ['adafruit:nrf52:feather52832',
                     'adafruit:nrf52:feather52840',
-                    'adafruit:samd:adafruit_feather_m0',
+                    'adafruit:samd:adafruit_feather_m0_express',
                     'adafruit:samd:adafruit_feather_m4',
                     'rp2040:rp2040:adafruit_feather',]
 
@@ -528,7 +528,7 @@ jobs:
         sketch: ['BLE_Settings','USB_Settings']
         fqbn_long: ['adafruit:nrf52:feather52832',
                     'adafruit:nrf52:feather52840',
-                    'adafruit:samd:adafruit_feather_m0',
+                    'adafruit:samd:adafruit_feather_m0_express',
                     'adafruit:samd:adafruit_feather_m4',
                     'rp2040:rp2040:adafruit_feather',]
 
