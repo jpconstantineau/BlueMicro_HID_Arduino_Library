@@ -137,6 +137,21 @@ void loop()
 # BlueMicro_HID API
 
 The following API is available if the BlueMicro_HID library in included in a sketch file.
+## Optional Setting & Parameters to set before Begin
+### bluemicro_hid.setBLEManufacturer("BLE_Manufacturer");
+### bluemicro_hid.setBLEModel("BLE_Model");
+### bluemicro_hid.setBLETxPower(4);
+### bluemicro_hid.setHIDMessageDelay(10);
+### bluemicro_hid.setUSBPollInterval(2);
+### bluemicro_hid.setUSBStringDescriptor("USB_Descriptor");
+## bluemicro_hid.begin();
 
-## bluemicro_hid.(...)
+## Sending buffers
+### bluemicro_hid.processQueues(CONNECTION_MODE_AUTO);
 
+Available connection Modes:
+``` c++
+CONNECTION_MODE_AUTO
+CONNECTION_MODE_USB_ONLY
+CONNECTION_MODE_BLE_ONLY
+```

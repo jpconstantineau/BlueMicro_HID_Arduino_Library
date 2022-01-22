@@ -50,7 +50,9 @@
 // the setup function runs once when you press reset or power the board
 void setup()
 {
-
+  bluemicro_hid.setHIDMessageDelay(10);
+  bluemicro_hid.setUSBPollInterval(2);
+  bluemicro_hid.setUSBStringDescriptor("USB_Descriptor");
   bluemicro_hid.begin(); 
   
   // Set up button, pullup opposite to active state
