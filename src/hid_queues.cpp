@@ -54,22 +54,22 @@ void HID_Queues::begin()
   #endif
 }
 
-void setHIDMessageDelay(int32_t delay)
+void HID_Queues::setHIDMessageDelay(int32_t delay)
 {
   _HIDMessageDelay = delay;
 }
 
-void setBLEManufacturer(const char* manufacturer)
+void HID_Queues::setBLEManufacturer(const char* manufacturer)
 {
   _manufacturer = manufacturer;
 }
 
-void setBLETxPower(int8_t power) 
+void HID_Queues::setBLETxPower(int8_t power) 
 {
   _power = power;
 }
 
-void setBLEModel(const char* model)
+void HID_Queues::setBLEModel(const char* model)
 {
   _model = model;
 }
