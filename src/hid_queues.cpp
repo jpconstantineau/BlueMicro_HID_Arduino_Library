@@ -16,8 +16,8 @@ HID_Queues::HID_Queues()
     ble_hid_driver = ble_hid;
     _HIDMessageDelay=10;
     _power=0;
-    _manufacturer="BlueMicro Industries"
-    _model = "BlueMicro_BLE"
+    _manufacturer="BlueMicro Industries";
+    _model = "BlueMicro_BLE";
   }
 #endif
 
@@ -27,8 +27,8 @@ HID_Queues::HID_Queues()
     usb_hid_driver = usb_hid;
     _HIDMessageDelay=10;
     _power=0;
-    _manufacturer="BlueMicro Industries"
-    _model = "BlueMicro_USB"
+    _manufacturer="BlueMicro Industries";
+    _model = "BlueMicro_USB";
   }
 
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
@@ -38,8 +38,8 @@ HID_Queues::HID_Queues()
       ble_hid_driver = ble_hid;
       _HIDMessageDelay=10;
       _power=0;
-      _manufacturer="BlueMicro Industries"
-      _model = "BlueMicro_HID"
+      _manufacturer="BlueMicro Industries";
+      _model = "BlueMicro_HID";
     }
   #endif
 #endif
