@@ -16,8 +16,10 @@ HID_Queues::HID_Queues()
     ble_hid_driver = ble_hid;
     _HIDMessageDelay=10;
     _power=0;
+    _interval_ms=2;
     _manufacturer="BlueMicro Industries";
     _model = "BlueMicro_BLE";
+    _descriptor = "BlueMicro_DESC";
   }
 #endif
 
@@ -27,8 +29,10 @@ HID_Queues::HID_Queues()
     usb_hid_driver = usb_hid;
     _HIDMessageDelay=10;
     _power=0;
+    _interval_ms=2;
     _manufacturer="BlueMicro Industries";
     _model = "BlueMicro_USB";
+    _descriptor = "BlueMicro_DESC";
   }
 
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
@@ -38,8 +42,10 @@ HID_Queues::HID_Queues()
       ble_hid_driver = ble_hid;
       _HIDMessageDelay=10;
       _power=0;
+      _interval_ms=2;
       _manufacturer="BlueMicro Industries";
       _model = "BlueMicro_HID";
+      _descriptor = "BlueMicro_DESC";
     }
   #endif
 #endif
@@ -47,7 +53,7 @@ HID_Queues::HID_Queues()
 void HID_Queues::begin()
 {
   #ifdef HARDWARE_DETECT_USB_AVAILABLE
-    setupUSB();
+    setupUSB(_interval_ms, _descriptor);
   #endif
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
     setupBLE(_manufacturer, _model, _power);
@@ -74,6 +80,15 @@ void HID_Queues::setBLEModel(const char* model)
   _model = model;
 }
 
+void HID_Queues::setUSBPollInterval(uint8_t interval_ms)
+{
+  _interval_ms=interval_ms;
+}
+
+void HID_Queues::setUSBStringDescriptor(const char *descriptor)
+{
+  _descriptor=descriptor;
+}
 
 void HID_Queues::keyboardReport(HIDKeyboard* report)
 {

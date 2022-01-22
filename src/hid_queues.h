@@ -39,12 +39,13 @@ class HID_Queues {
 
     void begin();
 
-
-  void setBLEManufacturer(const char* manufacturer  );
-  void setBLETxPower(int8_t power); // set power for this connection
-  void setBLEModel(const char* model);
-  void setHIDMessageDelay(int32_t delay);
-
+    void setBLEManufacturer(const char* manufacturer  );
+    void setBLETxPower(int8_t power); // set power for this connection
+    void setBLEModel(const char* model);
+    void setHIDMessageDelay(int32_t delay);
+    void setUSBPollInterval(uint8_t interval_ms);
+    void setUSBStringDescriptor(const char *descriptor);
+    
     // keyboard functions to add to queue
     void keyboardReport(HIDKeyboard* report);
     void keyboardReport(uint8_t modifier, uint8_t keycode[6]);
@@ -107,9 +108,10 @@ class HID_Queues {
     
     const char* _model;
     const char* _manufacturer;
+    const char* _descriptor;
     int8_t _power;
     int32_t _HIDMessageDelay;
-
+    uint8_t _interval_ms;
 
     static std::vector<HIDKeyboard> keycode_queue;
     static std::vector<HIDMouse>    mouse_queue;

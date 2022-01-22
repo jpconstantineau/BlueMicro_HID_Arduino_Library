@@ -25,6 +25,6 @@
   
   
     extern Adafruit_USBD_HID usb_hid;
-    void setupUSB(void);
+    void setupUSB(uint8_t interval_ms, const char *descriptor);
   #endif
 #endif
