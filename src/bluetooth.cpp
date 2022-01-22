@@ -7,12 +7,12 @@
   BLEDis bledis;
   BLEHidAdafruit blehid;
 
-void setupBLE()
+void setupBLE(const char* manufacturer, const char* model, int8_t power)
 {
   Bluefruit.begin();
-  Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
-  bledis.setManufacturer("Adafruit Industries");
-  bledis.setModel("Bluefruit Feather 52");
+  Bluefruit.setTxPower(power);    // Check bluefruit.h for supported values
+  bledis.setManufacturer(manufacturer);
+  bledis.setModel(model);
   bledis.begin();
   blehid.begin();
   blehid.setKeyboardLedCallback(set_keyboard_led);

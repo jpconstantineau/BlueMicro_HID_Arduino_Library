@@ -14,6 +14,10 @@ HID_Queues::HID_Queues()
   HID_Queues::HID_Queues(BLEHidAdafruit* ble_hid)
   {
     ble_hid_driver = ble_hid;
+    _HIDMessageDelay=10;
+    _power=0;
+    _manufacturer="BlueMicro Industries"
+    _model = "BlueMicro_BLE"
   }
 #endif
 
@@ -21,6 +25,10 @@ HID_Queues::HID_Queues()
   HID_Queues::HID_Queues(Adafruit_USBD_HID* usb_hid)
   {
     usb_hid_driver = usb_hid;
+    _HIDMessageDelay=10;
+    _power=0;
+    _manufacturer="BlueMicro Industries"
+    _model = "BlueMicro_USB"
   }
 
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
@@ -28,6 +36,10 @@ HID_Queues::HID_Queues()
     {
       usb_hid_driver = usb_hid;
       ble_hid_driver = ble_hid;
+      _HIDMessageDelay=10;
+      _power=0;
+      _manufacturer="BlueMicro Industries"
+      _model = "BlueMicro_HID"
     }
   #endif
 #endif
@@ -38,9 +50,31 @@ void HID_Queues::begin()
     setupUSB();
   #endif
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
-    setupBLE();
+    setupBLE(_manufacturer, _model, _power);
   #endif
 }
+
+void setHIDMessageDelay(int32_t delay)
+{
+  _HIDMessageDelay = delay;
+}
+
+void setBLEManufacturer(const char* manufacturer)
+{
+  _manufacturer = manufacturer;
+}
+
+void setBLETxPower(int8_t power) 
+{
+  _power = power;
+}
+
+void setBLEModel(const char* model)
+{
+  _model = model;
+}
+
+
 void HID_Queues::keyboardReport(HIDKeyboard* report)
 {
   addKeyboardReport(report);

@@ -38,6 +38,13 @@ class HID_Queues {
     
 
     void begin();
+
+
+  void setBLEManufacturer(const char* manufacturer  );
+  void setBLETxPower(int8_t power); // set power for this connection
+  void setBLEModel(const char* model);
+  void setHIDMessageDelay(int32_t delay);
+
     // keyboard functions to add to queue
     void keyboardReport(HIDKeyboard* report);
     void keyboardReport(uint8_t modifier, uint8_t keycode[6]);
@@ -98,6 +105,12 @@ class HID_Queues {
     void addGamepadReport(HIDGamepad* report);
     connectionState connection;
     
+    const char* _model;
+    const char* _manufacturer 
+    int8_t _power;
+    int32_t _HIDMessageDelay;
+
+
     static std::vector<HIDKeyboard> keycode_queue;
     static std::vector<HIDMouse>    mouse_queue;
     static std::vector<HIDConsumer> consumer_queue;
