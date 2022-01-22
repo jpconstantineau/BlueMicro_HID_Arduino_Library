@@ -50,12 +50,12 @@
 // the setup function runs once when you press reset or power the board
 void setup()
 {
-  bluemicro_hid.setBLEManufacturer("BlueMicro Industries");
-  bluemicro_hid.setBLEModel("BlueMicro_HID");
+  bluemicro_hid.setBLEManufacturer("BLE_Manufacturer");
+  bluemicro_hid.setBLEModel("BLE_Model");
   bluemicro_hid.setBLETxPower(4);
   bluemicro_hid.setHIDMessageDelay(10);
   bluemicro_hid.setUSBPollInterval(2);
-  bluemicro_hid.setUSBStringDescriptor();
+  bluemicro_hid.setUSBStringDescriptor("USB_Descriptor");
   //usb_hid.setReportCallback(NULL, hid_report_callback);
   //blehid.setKeyboardLedCallback(set_keyboard_led);
   bluemicro_hid.begin(); 
