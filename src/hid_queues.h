@@ -106,7 +106,7 @@ class HID_Queues {
     connectionState connection;
     
     const char* _model;
-    const char* _manufacturer 
+    const char* _manufacturer;
     int8_t _power;
     int32_t _HIDMessageDelay;
 
