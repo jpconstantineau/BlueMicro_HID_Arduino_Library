@@ -32,7 +32,7 @@
   const int pin = 5; 
   bool activeState = false;
 #endif
-#ifdef ADAFRUIT_FEATHER_M0_EXPRESS
+#ifdef ARDUINO_SAMD_FEATHER_M0
   const int pin = 5; 
   bool activeState = false;
 #endif
