@@ -288,7 +288,8 @@ void HID_Queues::clearGamepadQueue()
 void HID_Queues::processQueuesWithUSB()
 {
   // Remote wakeup
-  if (( TinyUSBDevice.suspended() && ((!isMouseQueueEmpty()) || (!isKeyboardQueueEmpty()) || (!isConsumerQueueEmpty())) ))
+  //if (( TinyUSBDevice.suspended() && ((!isMouseQueueEmpty()) || (!isKeyboardQueueEmpty()) || (!isConsumerQueueEmpty())) ))
+  if ( TinyUSBDevice.suspended())
   {
     // Wake up host if we are in suspend mode
     // and REMOTE_WAKEUP feature is enabled by host
