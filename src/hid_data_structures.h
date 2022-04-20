@@ -15,6 +15,24 @@ struct HIDKeyboard {
     uint8_t modifier;
     uint8_t keycode[6];
 
+      HIDKeyboard operator+(const HIDKeyboard& b) {
+            HIDKeyboard c;
+            c.modifier = this->modifier | b.modifier;
+            int j = 0;
+            for (int i = 0; i < 5; i++) {
+                  if(this->keycode[i]>0)
+                  {
+                        c.keycode[i] = this->keycode[i];
+                  }
+                  else
+                  {
+                     c.keycode[i] = b.keycode[j];
+                     j++;
+                  }
+            }
+            return c;
+      }
+
     bool operator!= (const HIDKeyboard &c2)
     {
           return !(*this == c2); 
@@ -41,6 +59,16 @@ struct HIDMouse {
     int8_t wheel; 
     int8_t pan;
 
+      HIDMouse operator+(const HIDMouse& b) {
+            HIDMouse c;
+            c.buttons = this->buttons | b.buttons;
+            c.x = this->x+b.x;
+            c.y = this->y+b.y; 
+            c.wheel = this->wheel + b.wheel; 
+            c.pan = this->pan + b.pan;
+            return c;
+      }
+
     bool operator!= (const HIDMouse &c2)
     {
           return !(*this == c2); 
@@ -59,6 +87,12 @@ struct HIDMouse {
 
 struct HIDConsumer {
     uint16_t usage_code;
+
+      HIDConsumer operator+(const HIDConsumer& b) {
+            HIDConsumer c;
+            c.usage_code = (this->usage_code > b.usage_code)?this->usage_code:b.usage_code;
+            return c;
+      }
 
     bool operator!= (const HIDConsumer &c2)
     {
@@ -79,6 +113,17 @@ struct HIDGamepad {
     int8_t rz;
     int8_t rx;
     int8_t r;
+
+      HIDGamepad operator+(const HIDGamepad& b) {
+            HIDGamepad c;
+            c.x  = this->x +b.x;
+            c.y  = this->y +b.y; 
+            c.z  = this->z +b.z; 
+            c.rx = this->rx+b.rx;
+            c.r  = this->r +b.r; 
+            c.rz = this->rz+b.rz; 
+            return c;
+      }
 
     bool operator!= (const HIDGamepad &c2)
     {
