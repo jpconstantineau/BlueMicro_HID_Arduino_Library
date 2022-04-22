@@ -12,6 +12,7 @@ void setupBLE(const char* manufacturer, const char* model, int8_t power)
   Bluefruit.begin();
   Bluefruit.setTxPower(power);    // Check bluefruit.h for supported values
   bledis.setManufacturer(manufacturer);
+  Bluefruit.setName(model);
   bledis.setModel(model);
   bledis.begin();
   blehid.begin();
