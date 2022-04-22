@@ -39,6 +39,10 @@ Notes:
 
 - STM32duino does not use TinyUSB as the USB stack.
 
+## Known Issues
+
+See the [list of issues](https://github.com/jpconstantineau/BlueMicro_HID_Arduino_Library/issues) linked above.
+
 # Examples
 
 There are a number of examples you can use to start from.  The following examples are very similar but are tailored to specific hardware.
