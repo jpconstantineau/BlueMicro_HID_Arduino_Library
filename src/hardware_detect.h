@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
 
-  #ifdef NRF52 // includes both NRF52832_XXAA and NRF52840_XXAA 
+  #ifdef ARDUINO_ARCH_NRF52 // includes both NRF52832_XXAA and NRF52840_XXAA 
     #define HARDWARE_DETECT_BLE_AVAILABLE
     #define HARDWARE_DETECTED
   #endif
