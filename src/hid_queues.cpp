@@ -300,21 +300,21 @@ void HID_Queues::processQueuesWithUSB()
     HIDMouse ms_report;
     ms_report = getMouseReport();
     usb_hid_driver->mouseReport(RID_MOUSE, ms_report.buttons, ms_report.x, ms_report.y, ms_report.wheel, ms_report.pan);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
   if ( usb_hid_driver->ready() && !isKeyboardQueueEmpty())
   {
     HIDKeyboard kb_report;
     kb_report = getKeyboardReport();
     usb_hid_driver->keyboardReport(RID_KEYBOARD, kb_report.modifier, kb_report.keycode);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
   if ( usb_hid_driver->ready() && !isConsumerQueueEmpty())
   {
     HIDConsumer cs_report;
     cs_report = getConsumerReport();
     usb_hid_driver->sendReport16(RID_CONSUMER_CONTROL, cs_report.usage_code);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
 }
 #endif
@@ -327,21 +327,21 @@ void HID_Queues::processQueuesWithBLE()
     HIDMouse ms_report;
     ms_report = getMouseReport();
     ble_hid_driver->mouseReport(ms_report.buttons, ms_report.x, ms_report.y, ms_report.wheel, ms_report.pan);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
   if ( !isKeyboardQueueEmpty())
   {
     HIDKeyboard kb_report;
     kb_report = getKeyboardReport();
     ble_hid_driver->keyboardReport(kb_report.modifier, kb_report.keycode);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
   if ( !isConsumerQueueEmpty())
   {
     HIDConsumer cs_report;
     cs_report = getConsumerReport();
     ble_hid_driver->consumerReport(cs_report.usage_code);
-    delay(10);
+    delay(_HIDMessageDelay);
   }
 }
 #endif
