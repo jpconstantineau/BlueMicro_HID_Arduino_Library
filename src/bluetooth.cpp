@@ -9,11 +9,27 @@
 
 void setupBLE(const char* manufacturer, const char* model, int8_t power)
 {
+  setupBLE( manufacturer,  model, power,0);
+}
+
+void setupBLE(const char* manufacturer, const char* model, int8_t power, int8_t BLEProfile)
+{
   Bluefruit.begin();
   Bluefruit.setTxPower(power);    // Check bluefruit.h for supported values
   bledis.setManufacturer(manufacturer);
   Bluefruit.setName(model);
   bledis.setModel(model);
+  
+
+  if (BLEProfile > 0)
+  {
+    ble_gap_addr_t gap_addr;
+    gap_addr = Bluefruit.getAddr();
+    gap_addr.addr[0] += BLEProfile;
+    Bluefruit.setAddr(&gap_addr);
+  }
+
+
   bledis.begin();
   blehid.begin();
   blehid.setKeyboardLedCallback(set_keyboard_led);
@@ -47,6 +63,8 @@ void startAdv(void)
   Bluefruit.Advertising.setFastTimeout(30);      // number of seconds in fast mode
   Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds
 }
+
+
 
 void set_keyboard_led(uint16_t conn_handle, uint8_t led_bitmap)
 {

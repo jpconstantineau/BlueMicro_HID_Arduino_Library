@@ -9,6 +9,7 @@
     #include <bluefruit.h>
     extern BLEDis bledis;
     extern BLEHidAdafruit blehid;
+    void setupBLE(const char* manufacturer, const char* model, int8_t power, int8_t BLEProfile);
     void setupBLE(const char* manufacturer, const char* model, int8_t power);
     void startAdv(void);
     void set_keyboard_led(uint16_t conn_handle, uint8_t led_bitmap);
