@@ -146,6 +146,10 @@ The following API is available if the BlueMicro_HID library in included in a ske
 ### bluemicro_hid.setBLEModel("BLE_Model");
 ### bluemicro_hid.setBLETxPower(4);
 ### bluemicro_hid.setHIDMessageDelay(10);
+This function changes the internal delay that's used between HID messages when multiple messages are queued up and processed with a single `bluemicro_hid.processQueues` call.
+
+Default value is `10` for 10 msec. 
+
 ### bluemicro_hid.setUSBPollInterval(2);
 ### bluemicro_hid.setUSBStringDescriptor("USB_Descriptor");
 ## bluemicro_hid.begin();
