@@ -52,6 +52,7 @@ HID_Queues::HID_Queues()
 
 void HID_Queues::begin()
 {
+  //reportvector.reserve(7);
   #ifdef HARDWARE_DETECT_USB_AVAILABLE
     setupUSB(_interval_ms, _descriptor);
   #endif
