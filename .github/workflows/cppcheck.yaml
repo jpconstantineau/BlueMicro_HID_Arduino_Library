@@ -1,0 +1,25 @@
+name: linting using cppcheck
+
+on: [push]
+jobs:
+  linting:
+    name: cppcheck
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+    - name:  Install Cppcheck
+      run: sudo apt-get install -y cppcheck
+    - name:  Run Cppcheck
+      run: |
+        cppcheck $GITHUB_WORKSPACE/src --enable=all  --force --template=gcc --inline-suppr  --output-file=report.txt 
+        cat report.txt
+    - name: Publish Report
+      uses: actions/upload-artifact@v3
+      with:
+          name: cppcheck report
+          path: report.txt
+
+
