@@ -25,6 +25,7 @@
 static std::vector<uint8_t> reportvector;
 
 /**************************************************************************************************************************/
+// cppcheck-suppress unusedFunction
 trigger_keycodes_t sendKeys(trigger_keycodes_t activeKeycodes)
 {
  // Serial.println("S");

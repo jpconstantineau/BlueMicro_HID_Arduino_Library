@@ -253,6 +253,7 @@ HIDConsumer HID_Queues::getConsumerReport()
     return reportdata;
 }
 
+// cppcheck-suppress unusedFunction
 HIDGamepad HID_Queues::getGamepadReport()
 {
     HIDGamepad reportdata  = gamepad_queue.back();
@@ -437,6 +438,7 @@ void HID_Queues::addConsumerReport(HIDConsumer* report)
   it = consumer_queue.insert(it, *report);   
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::addGamepadReport(HIDGamepad* report)
 {
   auto it = gamepad_queue.begin();
