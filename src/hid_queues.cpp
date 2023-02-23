@@ -439,7 +439,6 @@ void HID_Queues::addConsumerReport(HIDConsumer* report)
 }
 
 // cppcheck-suppress unusedFunction
-// cppcheck-suppress unusedPrivateFunction
 void HID_Queues::addGamepadReport(HIDGamepad* report)
 {
   auto it = gamepad_queue.begin();

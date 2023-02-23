@@ -103,6 +103,8 @@ class HID_Queues {
     void addKeyboardReport(HIDKeyboard* report);
     void addMouseReport(HIDMouse* report);
     void addConsumerReport(HIDConsumer* report);
+
+    // cppcheck-suppress unusedPrivateFunction
     void addGamepadReport(HIDGamepad* report);
     connectionState connection;
     
