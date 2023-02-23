@@ -61,31 +61,37 @@ void HID_Queues::begin()
   #endif
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setHIDMessageDelay(int32_t delay)
 {
   _HIDMessageDelay = delay;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setBLEManufacturer(const char* manufacturer)
 {
   _manufacturer = manufacturer;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setBLETxPower(int8_t power) 
 {
   _power = power;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setBLEModel(const char* model)
 {
   _model = model;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setUSBPollInterval(uint8_t interval_ms)
 {
   _interval_ms=interval_ms;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::setUSBStringDescriptor(const char *descriptor)
 {
   _descriptor=descriptor;
@@ -134,6 +140,7 @@ void HID_Queues::keyboardRelease()
   keyboardReport(&report);
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::keySequence(const char* str)
 {
    // Send each key in sequence
@@ -166,11 +173,13 @@ void HID_Queues::consumerReport(uint16_t usage_code)
   consumerReport(&report);
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::consumerKeyPress(uint16_t usage_code)
 {
   consumerReport(usage_code); 
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::consumerKeyRelease()
 {
   uint16_t code = 0;
@@ -193,26 +202,31 @@ void HID_Queues::mouseReport(uint8_t buttons, int8_t x, int8_t y, int8_t wheel, 
   mouseReport(&report); 
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::mouseButtonPress(uint8_t buttons)
 {
   mouseReport(buttons, 0, 0, 0, 0);
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::mouseButtonRelease()
 {
  mouseReport(0,0,0,0,0);
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::mouseMove(int8_t x, int8_t y)
 {
  mouseReport(0,x,y,0,0);
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::mouseScroll(int8_t wheel)
 {
  mouseReport(0, 0, 0, wheel,0) ;
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::mousePan(int8_t pan)
 {
   mouseReport(0, 0, 0, 0, pan);
@@ -261,26 +275,31 @@ bool HID_Queues::isConsumerQueueEmpty()
   return consumer_queue.empty();
 }
 
+// cppcheck-suppress unusedFunction
 bool HID_Queues::isGamepadQueueEmpty()
 {
   return gamepad_queue.empty();
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::clearKeyboardQueue()
 {
     keycode_queue.clear();
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::clearMouseQueue()
 {
     mouse_queue.clear();
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::clearConsumerQueue()
 {
     consumer_queue.clear();
 }
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::clearGamepadQueue()
 {
     gamepad_queue.clear();
@@ -347,6 +366,7 @@ void HID_Queues::processQueuesWithBLE()
 }
 #endif
 
+// cppcheck-suppress unusedFunction
 void HID_Queues::processQueues(connectionMode mode)
 {
   switch (mode)
