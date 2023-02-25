@@ -13,6 +13,8 @@ HID_Queues::HID_Queues()
     _descriptor = "BlueMicro_DESC";
     _power=0;
     _interval_ms=2;
+    connection = CONNECTION_NONE;
+
 }
 
 #ifdef HARDWARE_DETECT_BLE_AVAILABLE
