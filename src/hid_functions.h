@@ -21,14 +21,14 @@ const extern uint16_t  keymapsize;
 uint8_t AddLayers(uint8_t layer, uint16_t keycode);
 uint16_t  getKeycode(uint16_t pressedkey, uint8_t  layer);
 
-trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn, uint8_t  layer);
-trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn);
-trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, uint8_t  layer);
-trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes);
+trigger_keycodes_t processKeys(trigger_keys_t const &activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn, uint8_t  layer);
+trigger_keycodes_t processKeys(trigger_keys_t const &activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn);
+trigger_keycodes_t processKeys(trigger_keys_t const &activeKeys, trigger_keycodes_t &activeKeycodes, uint8_t  layer);
+trigger_keycodes_t processKeys(trigger_keys_t const &activeKeys, trigger_keycodes_t &activeKeycodes);
 
-uint8_t  getLayer(trigger_keys_t const activeKeys, addlayer_cb_t AddLayersFn, getkeycode_cb_t getKeycodefn);
-uint8_t  getLayer(trigger_keys_t const activeKeys, addlayer_cb_t AddLayersFn);
-uint8_t  getLayer(trigger_keys_t const activeKeys, getkeycode_cb_t getKeycodefn);
-uint8_t  getLayer(trigger_keys_t const activeKeys);
+uint8_t  getLayer(trigger_keys_t const &activeKeys, addlayer_cb_t AddLayersFn, getkeycode_cb_t getKeycodefn);
+uint8_t  getLayer(trigger_keys_t const &activeKeys, addlayer_cb_t AddLayersFn);
+uint8_t  getLayer(trigger_keys_t const &activeKeys, getkeycode_cb_t getKeycodefn);
+uint8_t  getLayer(trigger_keys_t const &activeKeys);
 
 #endif
