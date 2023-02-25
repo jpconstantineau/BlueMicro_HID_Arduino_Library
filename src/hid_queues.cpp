@@ -7,7 +7,12 @@
 
 HID_Queues::HID_Queues()
 {
-  ;
+    _HIDMessageDelay=10;
+    _manufacturer="BlueMicro Industries";
+    _model = "BlueMicro_NONE";
+    _descriptor = "BlueMicro_DESC";
+    _power=0;
+    _interval_ms=2;
 }
 
 #ifdef HARDWARE_DETECT_BLE_AVAILABLE
