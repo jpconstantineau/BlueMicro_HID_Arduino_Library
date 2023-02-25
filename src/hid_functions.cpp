@@ -30,7 +30,7 @@ uint16_t  getKeycode(uint16_t pressedkey, uint8_t  layer)
 /**************************************************************************************************************************/
 // Process Keys with Layers entered - custom matrix mapping
 /**************************************************************************************************************************/
-trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t activeKeycodes, getkeycode_cb_t getKeycodefn, uint8_t  layer)
+trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn, uint8_t  layer)
 {
   //std::transform Needs #include <algorithm>
   std::transform(activeKeys.cbegin(), activeKeys.cend(), std::back_inserter(activeKeycodes),
@@ -40,7 +40,7 @@ trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t act
 /**************************************************************************************************************************/
 // Process Keys with No Layers entered - custom matrix mapping
 /**************************************************************************************************************************/
-trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t activeKeycodes, getkeycode_cb_t getKeycodefn)
+trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, getkeycode_cb_t getKeycodefn)
 {
   uint8_t  layer = 0;
   return processKeys(activeKeys, activeKeycodes, getKeycodefn, layer);
@@ -48,14 +48,14 @@ trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t act
 /**************************************************************************************************************************/
 // Process Keys with default matrix mapping - Layer entered 
 /**************************************************************************************************************************/
-trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t activeKeycodes, uint8_t  layer)
+trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes, uint8_t  layer)
 {
   return processKeys(activeKeys, activeKeycodes, getKeycode, layer);
 }
 /**************************************************************************************************************************/
 // Process Keys with No Layers entered - default matrix mapping 
 /**************************************************************************************************************************/
-trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t activeKeycodes)
+trigger_keycodes_t processKeys(trigger_keys_t const activeKeys, trigger_keycodes_t &activeKeycodes)
 {
   uint8_t  layer = 0;
   return processKeys(activeKeys, activeKeycodes, getKeycode, layer);
@@ -64,7 +64,7 @@ trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t act
 /**************************************************************************************************************************/
 // get Layer from pressed keys - custom matrix mapping - Custom Layer mapping
 /**************************************************************************************************************************/
-uint8_t  getLayer(trigger_keys_t activeKeys, addlayer_cb_t AddLayersFn, getkeycode_cb_t getKeycodefn)
+uint8_t  getLayer(trigger_keys_t const activeKeys, addlayer_cb_t AddLayersFn, getkeycode_cb_t getKeycodefn)
 {  
   trigger_keycodes_t triggerKeys;
   triggerKeys = processKeys(activeKeys,triggerKeys,getKeycodefn);  // get keycodes for layer 0
@@ -75,7 +75,7 @@ uint8_t  getLayer(trigger_keys_t activeKeys, addlayer_cb_t AddLayersFn, getkeyco
 /**************************************************************************************************************************/
 // get Layer from pressed keys - Standard matrix mapping - Custom Layer mapping
 /**************************************************************************************************************************/
-uint8_t  getLayer(trigger_keys_t activeKeys, addlayer_cb_t AddLayersFn)
+uint8_t  getLayer(trigger_keys_t const activeKeys, addlayer_cb_t AddLayersFn)
 {
   return getLayer(activeKeys, AddLayersFn, getKeycode);
 }
@@ -83,7 +83,7 @@ uint8_t  getLayer(trigger_keys_t activeKeys, addlayer_cb_t AddLayersFn)
 /**************************************************************************************************************************/
 // get Layer from pressed keys - custom matrix mapping - Standard Layer mapping
 /**************************************************************************************************************************/
-uint8_t  getLayer(trigger_keys_t activeKeys, getkeycode_cb_t getKeycodefn)
+uint8_t  getLayer(trigger_keys_t const activeKeys, getkeycode_cb_t getKeycodefn)
 {
   return getLayer(activeKeys, AddLayers, getKeycodefn);
 }
@@ -91,7 +91,7 @@ uint8_t  getLayer(trigger_keys_t activeKeys, getkeycode_cb_t getKeycodefn)
 /**************************************************************************************************************************/
 // get Layer from pressed keys - Standard matrix mapping - Standard Layer mapping
 /**************************************************************************************************************************/
-uint8_t  getLayer(trigger_keys_t activeKeys)
+uint8_t  getLayer(trigger_keys_t const activeKeys)
 {
   return getLayer(activeKeys, AddLayers, getKeycode);
 }

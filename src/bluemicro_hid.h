@@ -12,7 +12,6 @@
 #include "hid_functions.h"
 extern HID_Queues bluemicro_hid;
 
-trigger_keycodes_t processKeys(trigger_keys_t activeKeys, trigger_keycodes_t activeKeycodes);
 trigger_keycodes_t sendKeys(trigger_keycodes_t activeKeycodes);
 
 #endif
