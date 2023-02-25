@@ -7,7 +7,7 @@
 
 HID_Queues::HID_Queues()
 {
-    _HIDMessageDelay=10;
+    _HIDMessageDelay=2;
     _manufacturer="BlueMicro Industries";
     _model = "BlueMicro_NONE";
     _descriptor = "BlueMicro_DESC";
@@ -19,12 +19,13 @@ HID_Queues::HID_Queues()
   HID_Queues::HID_Queues(BLEHidAdafruit* ble_hid)
   {
     ble_hid_driver = ble_hid;
-    _HIDMessageDelay=10;
+    _HIDMessageDelay=2;
     _power=0;
     _interval_ms=2;
     _manufacturer="BlueMicro Industries";
     _model = "BlueMicro_BLE";
     _descriptor = "BlueMicro_DESC";
+    connection = CONNECTION_NONE;
   }
 #endif
 
@@ -32,12 +33,13 @@ HID_Queues::HID_Queues()
   HID_Queues::HID_Queues(Adafruit_USBD_HID* usb_hid)
   {
     usb_hid_driver = usb_hid;
-    _HIDMessageDelay=10;
+    _HIDMessageDelay=2;
     _power=0;
     _interval_ms=2;
     _manufacturer="BlueMicro Industries";
     _model = "BlueMicro_USB";
     _descriptor = "BlueMicro_DESC";
+    connection = CONNECTION_NONE;
   }
 
   #ifdef HARDWARE_DETECT_BLE_AVAILABLE
@@ -51,6 +53,7 @@ HID_Queues::HID_Queues()
       _manufacturer="BlueMicro Industries";
       _model = "BlueMicro_HID";
       _descriptor = "BlueMicro_DESC";
+      connection = CONNECTION_NONE;
     }
   #endif
 #endif
